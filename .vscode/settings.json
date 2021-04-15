@@ -1,0 +1,16 @@
+{
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/venv": true,
+        "**/__pycache__": true
+    },
+    "files.watcherExclude": {
+        "**/venv/*/**": true,
+        "**/__pycache__/*/**": true
+    },
+    "search.exclude": {
+        "**/venv": true,
+        "**/__pycache__": true
+    },
+    "python.pythonPath": "backend\\venv\\Scripts\\python.exe"
+}
