@@ -6,6 +6,9 @@ class Album(models.Model):
     title = models.CharField(db_column='Title', max_length=160)
     artist = models.ForeignKey('chinook.Artist', db_column='ArtistId', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'albums'
@@ -52,6 +55,7 @@ class Track(models.Model):
     milliseconds = models.IntegerField(db_column='Milliseconds')
     bytes = models.IntegerField(db_column='Bytes', blank=True, null=True)
     unitprice = models.DecimalField(db_column='UnitPrice', max_digits=10, decimal_places=2)
+    
 
     class Meta:
         managed = False
@@ -87,3 +91,18 @@ class Playlist(models.Model):
     class Meta:
         managed = False
         db_table = 'playlists'
+
+class Invoices(models.Model):
+    invoiceid = models.AutoField(db_column='InvoiceId', primary_key=True)  # Field name made lowercase.
+    customerid = models.IntegerField(db_column='CustomerId')  # Field name made lowercase.
+    invoicedate = models.DateTimeField(db_column='InvoiceDate')  # Field name made lowercase.
+    billingaddress = models.TextField(db_column='BillingAddress', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    billingcity = models.TextField(db_column='BillingCity', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    billingstate = models.TextField(db_column='BillingState', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    billingcountry = models.TextField(db_column='BillingCountry', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    billingpostalcode = models.TextField(db_column='BillingPostalCode', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    total = models.TextField(db_column='Total')  # Field name made lowercase. This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'invoices'
