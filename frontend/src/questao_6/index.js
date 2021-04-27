@@ -5,7 +5,8 @@ const ValidationSchema = Yup.object().shape({
   titulo: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('Required')
+    .notOneOf(['pop'], "Nome não permitido"),
   autor: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')

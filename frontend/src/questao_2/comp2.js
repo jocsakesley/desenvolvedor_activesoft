@@ -1,12 +1,17 @@
-import { useState } from "react";
+import React from "react";
+import { Context } from "./provider";
+
 
 function Comp2() {
-    const [texto, setTexto] = useState('')
-    return (
-      <div>
-        <input value={texto} onChange={event => setTexto(event.target.value)} />
-      </div>
-    );
-  }
-  
+  const { text, setTexto } = React.useContext(Context)
+
+  return (
+    <div>
+      <Context.Provider value={{ text, setTexto }}>
+        <input type="text" onChange={event => setTexto({ text: event.target.value })} />
+      </Context.Provider>
+    </div >
+  );
+}
+
 export default Comp2;
