@@ -1,14 +1,17 @@
-import { useState } from 'react'
-import NotaField from './NotaField'
+import NotaField from './NotaField';
+import '../App.css';
 
 function Questao1() {
-    const [nota, setNota] = useState(3)
-    return (
-      <div>
-        <h1>Questão 1</h1>
-        <NotaField maxNota={5} value={nota} onChange={setNota} />
-      </div>
-    );
-  }
-  
+
+  return (
+    <div className="App">
+      <h1>Questão 1</h1>
+
+      <NotaField maxNota={5} />
+
+
+    </div>
+  );
+}
+
 export default Questao1;

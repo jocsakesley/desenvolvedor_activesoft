@@ -1,22 +1,24 @@
+import React, { useState } from 'react';
+import { FaStar } from 'react-icons/fa';
 
-function NotaField({ maxNota, value, onChange }) {
-    function onChangeValue (event) {
-        const nota = event.target.value
+function NotaField({ maxNota, value, onClick }) {
+  const [nota, setNota] = useState(null);
 
-        if (nota <= maxNota) {
-            onChange(nota)
-        }
-    }
+  return (
+    <div>
+      {[...Array(maxNota)].map((star, i) => {
+        const ratingValue = i + 1;
+        return (
+          <label>
+            <input type="radio" value={ratingValue} name="rating" onClick={() => setNota(ratingValue)} />
+            <FaStar size={50} color={ratingValue <= nota ? "#FFC107" : "#E4E5E9"} className="star" />
 
-    return (
-      <div>
-        <input
-            type={'number'}
-            value={value}
-            onChange={onChangeValue}
-        />
-      </div>
-    );
-  }
-  
+          </label>
+        );
+      })}
+
+    </div>
+  );
+}
+
 export default NotaField;
